@@ -1,4 +1,4 @@
-TARGETS = sample02_04
+TARGETS = create_img read_write
 
 all: $(TARGETS)
 
@@ -7,7 +7,10 @@ CXXFLAGS= -Wall `pkg-config opencv4 --cflags`
 # std=c++11 
 OPENCV_LIBS= `pkg-config opencv4 --libs`
 
-sample02_04: sample02_04.o
+create_img: create_img.o
+	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
+
+read_write: read_write.o
 	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
 
 
