@@ -1,4 +1,4 @@
-TARGETS = create_img read_write
+TARGETS = flip resize rotate perspective trimming
 
 all: $(TARGETS)
 
@@ -7,10 +7,19 @@ CXXFLAGS= -Wall `pkg-config opencv4 --cflags`
 # std=c++11 
 OPENCV_LIBS= `pkg-config opencv4 --libs`
 
-create_img: create_img.o
+flip: flip.o
 	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
 
-read_write: read_write.o
+resize: resize.o
+	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
+
+rotate: rotate.o
+	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
+
+perspective: perspective.o
+	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
+
+trimming: trimming.o
 	$(CXX) -g -o $@ $^ $(OPENCV_LIBS)
 
 
